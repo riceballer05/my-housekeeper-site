@@ -1,0 +1,604 @@
+/* 
+===============================================
+  Design Variables & Reset
+===============================================
+*/
+:root {
+    --color-main: #ffffff;
+    /* クリアホワイト */
+    --color-bg: #fdfcfb;
+    /* 薄いニュアンスベージュ */
+    --color-accent: #9fbba2;
+    /* セージグリーン */
+    --color-accent-hover: #8ba78e;
+    --color-text: #4a4a4a;
+    /* チャコールグレー（視認性高） */
+    --color-text-light: #7a7a7a;
+
+    --font-jp: 'Noto Sans JP', sans-serif;
+    --font-en: 'Montserrat', sans-serif;
+
+    --max-width: 1000px;
+    --header-height: 80px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-jp);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.font-en {
+    font-family: var(--font-en);
+}
+
+.container {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title .en {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.section-title .jp {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* 
+===============================================
+  UI Components (Glassmorphism, Buttons, etc.)
+===============================================
+*/
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(159, 187, 162, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(159, 187, 162, 0.4);
+}
+
+/* 
+===============================================
+  Header & Footer
+===============================================
+*/
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+}
+
+.glass-header {
+    background: rgba(253, 252, 251, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.main-nav a:not(.btn) {
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.main-nav a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:not(.btn):hover::after {
+    width: 100%;
+}
+
+.site-footer {
+    background-color: #f0eee9;
+    padding: 60px 0 40px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* 
+===============================================
+  Responsive (スマホ対応)
+===============================================
+*/
+@media (max-width: 768px) {
+    .main-nav ul {
+        display: none;
+        /* スマホではハンバーガーメニュー等にする想定だが今回は暫定非表示 */
+    }
+
+    .section-title .jp {
+        font-size: 1.6rem;
+    }
+}
+
+/* 
+===============================================
+  Hero Section
+===============================================
+*/
+.hero {
+    height: 90vh;
+    min-height: 500px;
+    background: url('../img/hero.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--header-height);
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 252, 251, 0.3);
+    /* 画像の上に薄いベールを重ねてテキスト視認性向上 */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    padding: 40px 60px;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+.catchphrase {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+/* 
+===============================================
+  About Section & Typography
+===============================================
+*/
+.about-section {
+    position: relative;
+    background: url('../img/about.png') center/cover no-repeat fixed;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 252, 251, 0.85);
+    /* 半透明で画像を透かす */
+    z-index: 0;
+}
+
+.about-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.single-column {
+    max-width: 800px;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feature-card {
+    padding: 32px;
+    position: relative;
+    padding-left: 80px;
+}
+
+.feature-num {
+    position: absolute;
+    left: 24px;
+    top: 32px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(159, 187, 162, 0.4);
+    line-height: 1;
+}
+
+/* 
+===============================================
+  Services Section
+===============================================
+*/
+.service-card {
+    padding: 40px;
+    margin-bottom: 24px;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 16px;
+}
+
+.service-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+.price-tag {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.service-details {
+    list-style: none;
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.service-details li {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.service-details li::before {
+    content: '•';
+    color: var(--color-accent);
+    position: absolute;
+    left: -20px;
+}
+
+.service-action {
+    text-align: center;
+    margin-top: 32px;
+}
+
+/* 
+===============================================
+  Works (Instagram) Section
+===============================================
+*/
+.ig-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.ig-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.ig-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.ig-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 0 0 12px 12px;
+}
+
+.ig-item:hover img,
+.ig-item:focus img {
+    transform: scale(1.05);
+}
+
+.ig-item:hover .ig-overlay,
+.ig-item:focus .ig-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.ig-caption {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ig-link {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* 
+===============================================
+  Flow Section
+===============================================
+*/
+.flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.flow-step {
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.step-num {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+/* 
+===============================================
+  Contact Page
+===============================================
+*/
+.contact-page-section {
+    padding-top: 140px;
+}
+
+.contact-form-wrapper {
+    padding: 48px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.required {
+    background: #e76f51;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.optional {
+    background: #ccc;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    transition: box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(159, 187, 162, 0.3);
+}
+
+.file-upload-wrapper {
+    position: relative;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-large {
+    padding: 16px 48px;
+    font-size: 1.1rem;
+}
+
+.form-message {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 24px;
+    }
+
+    .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+}

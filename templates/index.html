@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text glass-card">
+            <h1 class="font-en">Lighten your life.</h1>
+            <p class="catchphrase">「重力（しがらみ）」を感じさせない、<br>軽やかな暮らしの提案。</p>
+            <a href="/contact" class="btn btn-primary mt-4">無料メール相談を始める</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="container single-column">
+        <div class="section-title">
+            <span class="en">About</span>
+            <h2 class="jp">選ばれる理由</h2>
+            <p>独自の整理ロジックと、寄り添うサポート。</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card glass-card">
+                <div class="feature-num font-en">01</div>
+                <h3>モノと丁寧に向き合う</h3>
+                <p>１つ１つのモノを手に取り、丁寧に向き合います。モノの買い方や持ち方への確かな気づきが得られます。</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-num font-en">02</div>
+                <h3>月1回の習いごと感覚で</h3>
+                <p>片付けは、その時々の暮らしに合わせて続けていくもの。定期的に整えられるよう、お手ごろな価格設定にしています。</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-num font-en">03</div>
+                <h3>作業後はLINE相談無料</h3>
+                <p>いつでも無料でLINE相談が可能。収納の買い足しや定位置の決め直しなど、気軽に話し合えるパートナーになります。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container single-column">
+        <div class="section-title">
+            <span class="en">Services</span>
+            <h2 class="jp">サービス・料金</h2>
+            <p>あなたの暮らしに合わせたサポートをご提供します。</p>
+        </div>
+
+        <div class="service-card glass-card">
+            <div class="service-header">
+                <h3>出張お片付けサポート</h3>
+                <span class="price-tag">平日3h：10,000円(税込)〜</span>
+            </div>
+            <p class="service-desc">マンツーマンでお片付けのサポートをする基本プラン。モノの要不要の仕分けを手伝ってほしい、使いやすい場所に収納して暮らしをラクにしたい方に最適です。</p>
+            <ul class="service-details">
+                <li>土日祝：5時間 17,000円（税込）</li>
+                <li>出張可能エリア：札幌市及びその近郊</li>
+                <li>出張料：5kmにつき1,000円</li>
+            </ul>
+            <div class="service-action">
+                <a href="/contact?menu=onsite" class="btn btn-primary">このプランで申し込む</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Works Section (Instagram) -->
+<section id="works" class="works-section">
+    <div class="container">
+        <div class="section-title">
+            <span class="en">Works</span>
+            <h2 class="jp">お片付け事例</h2>
+            <p>日々の活動とBefore/Afterをご紹介します。</p>
+        </div>
+
+        <div class="ig-grid">
+            {% for post in ig_posts %}
+            <div class="ig-item" tabindex="0">
+                <img src="{{ post.image_url }}" alt="{{ post.caption[:15] }}..." loading="lazy">
+                <div class="ig-overlay glass-card">
+                    <p class="ig-caption">{{ post.caption }}</p>
+                    <a href="{{ post.permalink }}" target="_blank" class="ig-link font-en">View on Instagram</a>
+                </div>
+            </div>
+            {% else %}
+            <p>事例データを読み込んでいます...</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Flow Section -->
+<section id="flow" class="flow-section">
+    <div class="container single-column">
+        <div class="section-title">
+            <span class="en">Flow</span>
+            <h2 class="jp">ご利用の流れ</h2>
+        </div>
+
+        <div class="flow-steps">
+            <div class="flow-step glass-card">
+                <div class="step-num font-en">STEP 1</div>
+                <h4>お申込み・ご相談</h4>
+                <p>お問い合わせフォームより、現在のお悩みやご希望の作業内容をお送りください。現状のお写真も添付可能です。</p>
+            </div>
+            <div class="flow-step glass-card">
+                <div class="step-num font-en">STEP 2</div>
+                <h4>事前お打ち合わせ (Zoom等)</h4>
+                <p>オンラインでサービス内容のご説明と、詳細なヒアリングを行います。一緒に作業の目標を決めましょう。</p>
+            </div>
+            <div class="flow-step glass-card">
+                <div class="step-num font-en">STEP 3</div>
+                <h4>ご訪問・作業 (当日)</h4>
+                <p>要不要の仕分け（整理）から定位置の決定（収納）まで、お客様とご一緒に作業を進めます。</p>
+            </div>
+            <div class="flow-step glass-card">
+                <div class="step-num font-en">STEP 4</div>
+                <h4>アフターフォロー</h4>
+                <p>作業終了後もLINEでいつでも無料相談が可能です。一緒に整った暮らしを維持していきましょう。</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

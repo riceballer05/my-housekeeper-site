@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}お問い合わせ | お片付け専門ハウスキーパー{% endblock %}
+
+{% block content %}
+<section class="contact-page-section">
+    <div class="container single-column">
+        <div class="section-title">
+            <span class="en">Contact</span>
+            <h1 class="jp">お問い合わせ</h1>
+            <p>現状のお悩みやご希望について、お気軽にご相談ください。</p>
+        </div>
+
+        <div class="contact-form-wrapper glass-card">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">お名前 <span class="required">必須</span></label>
+                    <input type="text" id="name" name="name" required placeholder="例：山田 花子">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">必須</span></label>
+                    <input type="email" id="email" name="email" required placeholder="例：info@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="menu">ご希望のメニュー <span class="required">必須</span></label>
+                    <select id="menu" name="menu" required>
+                        <option value="">選択してください</option>
+                        <option value="onsite">出張お片付けサポート</option>
+                        <option value="online">オンライン相談</option>
+                        <option value="other">その他・お問い合わせ</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">ご相談内容 <span class="optional">任意</span></label>
+                    <textarea id="message" name="message" rows="5" placeholder="お悩みの状況や、ご希望などを自由にご記入ください。"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">現状のお写真アップロード <span class="optional">任意</span></label>
+                    <p class="form-hint">※画像は自動で最適化されて送信されます。</p>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/heic">
+                        <div class="file-preview" id="filePreview">写真を選択、またはドラッグ＆ドロップ</div>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary btn-large" id="submitBtn">
+                        <span class="btn-text">送信する</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                    <p id="formMessage" class="form-message hidden"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

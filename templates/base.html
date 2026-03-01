@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}お片付け専門ハウスキーパー - 軽やかな暮らしの提案{% endblock %}</title>
+
+    <!-- Google Fonts: Noto Sans JP & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Fix Instagram image 403 Forbidden -->
+    <meta name="referrer" content="no-referrer">
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <!-- ヘッダー（固定・グラスモーフィズム） -->
+    <header class="site-header glass-header">
+        <div class="container header-container">
+            <a href="/" class="logo font-en">Shunou Bikatsu</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">選ばれる理由</a></li>
+                    <li><a href="#services">サービス・料金</a></li>
+                    <li><a href="#works">お片付け事例</a></li>
+                    <li><a href="#flow">ご利用の流れ</a></li>
+                    <li><a href="/contact" class="btn btn-primary">ご相談はこちら</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+        <div class="container">
+            <p class="font-en">&copy; 2026 Shunou Bikatsu. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/shunou_bikatsu" target="_blank"
+                    rel="noopener noreferrer">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>
